@@ -70,10 +70,18 @@ en:
         title: How we bring equity into focus
         subtitle: The Racial and Social Equity Index combines information on race, ethnicity, and related demographics with data on socioeconomic and health disadvantages to identify where priority populations make up relatively large proportions of neighborhood residents.
         button_title: Learn more
+    budgets:
+      projects:
+        filters:
+          category_prompt: Choose category
     pages:
       home:
         statistics:
           plans_count: Plans
+    proposals:
+      proposals:
+        filters:
+          category_prompt: Choose category
     suomifi:
       omniauth_callbacks:
         failure:
