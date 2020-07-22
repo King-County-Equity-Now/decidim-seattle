@@ -24,6 +24,10 @@ What it's going to do:
 
 People sometimes run into problems with database connection issues. If that's the case, chances are postgres is shutting down right after starting up and to find out why, run `brew info postgresql` and check out the instructions on how to start postgresql manually. That's usually enough to get people unblocked.
 
+If you'd like some seed data to exercise the site run:
+
+```$ bin/rails rake db:seed```
+
 ### Setup (windows/linux, or people who hate the streamlined script for whatever reason)
 
 Please see the core Decidim docs:
