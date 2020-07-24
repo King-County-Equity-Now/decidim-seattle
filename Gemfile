@@ -50,6 +50,9 @@ gem "faker", "~> 1.9"
 # HKI authentication
 gem "omniauth_openid_connect", "~> 0.3"
 
+# Postgis
+gem 'activerecord-postgis-adapter'
+
 # HKI import
 # Roo is not currently compatible with RubyZip 2.0+ which is now a dependency of
 # decidim-core.
