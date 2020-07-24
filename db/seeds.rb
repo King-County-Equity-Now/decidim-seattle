@@ -21,3 +21,12 @@ Decidim::Plans::Plan.all.each do |p|
   p.coauthorships = []
   p.add_coauthor(admin)
 end
+
+# Racial and social equity composite index data
+
+unless Rails.env.production?
+  connection = ActiveRecord::Base.connection
+  sql = File.read('db/equity_composites.sql')
+
+  connection.execute(sql)
+end
