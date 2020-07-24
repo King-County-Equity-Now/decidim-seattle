@@ -26,7 +26,7 @@ People sometimes run into problems with database connection issues. If that's th
 
 If you'd like some seed data to exercise the site run:
 
-```$ bin/rails rake db:seed```
+```$ bin/rails db:seed```
 
 ### Setup (windows/linux, or people who hate the streamlined script for whatever reason)
 
