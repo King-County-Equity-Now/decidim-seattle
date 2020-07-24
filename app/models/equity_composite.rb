@@ -6,4 +6,6 @@
 # You can populate this data with /bin/rails db:seed:equity_composite_index or bin/rails db:setup
 #
 class EquityComposite < ApplicationRecord
+  self.ignored_columns = %w(geom)
+  scope :contains_point, ->(long, lat) { where("ST_Contains(geom, ST_Point(?, ?))", long, lat) }
 end
