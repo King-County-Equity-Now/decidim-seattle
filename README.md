@@ -97,7 +97,7 @@ disadvantaged.
 3. Run `bin/rails db:seed:equity_composites`
 
 If you get an error about DropGeometryColumn, feel free to remove that line from
-the sql dump and re-run. It doesn't seem to be necessary sa the entire table is
+the sql dump and re-run. It doesn't seem to be necessary as the entire table is
 about to be dropped.
 
 ## Deploying
