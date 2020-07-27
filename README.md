@@ -15,27 +15,34 @@ Run `script/dev-setup` and follow the instructions until you see:
 
 `>> You're all set up!`
 
-What it's going to do:
+Note: people sometimes run into problems with database connection issues. If that's the case, chances are postgres is shutting down right after starting up and to find out why, run `brew info postgresql` and check out the instructions on how to start postgresql manually and try that. That's usually enough to get people unblocked.
+
+What all it's going to do:
 
 - Install the asdf package manager (if you prefer rbenv, check out the windows/linux setup below)
 - Install Ruby via asdf
-- Install PostgreSQL and ImageMagick via homebrew
-- Create and set up the database
+- Install PostgreSQL, PostGIS, ImageMagick via homebrew
+- Create and migrate the database
+- Seed the database with sample data if it's empty
 
-People sometimes run into problems with database connection issues. If that's the case, chances are postgres is shutting down right after starting up and to find out why, run `brew info postgresql` and check out the instructions on how to start postgresql manually. That's usually enough to get people unblocked.
-
-If you'd like some seed data to exercise the site run:
-
-```$ bin/rails db:seed```
+It's intended to be an idempotent script, so you can run it multiple times and it'll only change
+what needs to be changed, so feel free to run it often.
 
 ### Setup (windows/linux, or people who hate the streamlined script for whatever reason)
 
 Please see the core Decidim docs:
 https://github.com/decidim/decidim/blob/master/docs/getting_started.md
 
+Then install PostGIS:
+https://postgis.net/install/
+
 ## Running the server
 
 `bin/rails server`
+
+Alternately, if you'd like to run `script/dev-setup` every time before starting the server, you can do that with:
+
+`script/dev-start`
 
 ## Decidim Documentation and Administration Manual
 
