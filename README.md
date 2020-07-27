@@ -15,23 +15,34 @@ Run `script/dev-setup` and follow the instructions until you see:
 
 `>> You're all set up!`
 
-What it's going to do:
+Note: people sometimes run into problems with database connection issues. If that's the case, chances are postgres is shutting down right after starting up and to find out why, run `brew info postgresql` and check out the instructions on how to start postgresql manually and try that. That's usually enough to get people unblocked.
+
+What all it's going to do:
 
 - Install the asdf package manager (if you prefer rbenv, check out the windows/linux setup below)
 - Install Ruby via asdf
-- Install PostgreSQL and ImageMagick via homebrew
-- Create and set up the database
+- Install PostgreSQL, PostGIS, ImageMagick via homebrew
+- Create and migrate the database
+- Seed the database with sample data if it's empty
 
-People sometimes run into problems with database connection issues. If that's the case, chances are postgres is shutting down right after starting up and to find out why, run `brew info postgresql` and check out the instructions on how to start postgresql manually. That's usually enough to get people unblocked.
+It's intended to be an idempotent script, so you can run it multiple times and it'll only change
+what needs to be changed, so feel free to run it often.
 
 ### Setup (windows/linux, or people who hate the streamlined script for whatever reason)
 
 Please see the core Decidim docs:
 https://github.com/decidim/decidim/blob/master/docs/getting_started.md
 
+Then install PostGIS:
+https://postgis.net/install/
+
 ## Running the server
 
 `bin/rails server`
+
+Alternately, if you'd like to run `script/dev-setup` every time before starting the server, you can do that with:
+
+`script/dev-start`
 
 ## Decidim Documentation and Administration Manual
 
@@ -61,6 +72,31 @@ With all customizations and modifications, try to keep the application as
 maintainable as possible against the Decidim core. Try to avoid hard core
 customizations which require lots of efforts to maintain over Decidim's core
 updates.
+
+## Equity data
+
+One of the main changes we made from the City of Helsinki site (other than the
+look and feel) is pulling in quantitative equity data from the City of 
+Seattle's [Racial and Social Equity Index](http://data-seattlecitygis.opendata.arcgis.com/datasets/SeattleCityGIS::racial-and-social-equity-composite-index).
+
+The Racial and Social Equity composite index combines information on race,
+ethnicity, and related demographics with data on socioeconomic and health
+disadvantages to identify where priority populations make up relatively large
+proportions of neighborhood residents. 
+
+Our hope is that incorporating and displaying this data empowers the steering
+committee and the public to make choices that more directly benefit the
+disadvantaged.
+
+### How to update the data source
+
+1. Download the shapefile from the above loink
+2. Convert it to an sql dump: `shp2pgsql -d -I -m db/equity_column_mapping 9362e3b7-801d-4b8e-9a79-cf70afe2d10d202037-1-12y9ny2.x61ol.shp equity_composites > db/equity_composites.sql`
+3. Run `bin/rails db:seed:equity_composites`
+
+If you get an error about DropGeometryColumn, feel free to remove that line from
+the sql dump and re-run. It doesn't seem to be necessary as the entire table is
+about to be dropped.
 
 ## Deploying
 

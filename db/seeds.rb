@@ -21,3 +21,6 @@ Decidim::Plans::Plan.all.each do |p|
   p.coauthorships = []
   p.add_coauthor(admin)
 end
+
+# Racial and social equity composite index data
+EquityCompositesImporter.import!

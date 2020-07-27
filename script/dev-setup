@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# This script is intended to be idempotent, in that you can run it
+# multiple times and it won't break anything. For example, if postgis
+# was added after the last time you ran it, it should be able to install
+# postgis and not try to reinstall postgresql or have other unpleasant
+# side-effects.
+
 BUNDLER_VERSION="~>2.1.0"
 
 cd "$(dirname "$0")/.." || exit 1
@@ -36,6 +42,11 @@ if ! cmd psql; then
   brew-install postgresql
 fi
 
+info "Installing postgis (if necessary)"
+if ! cmd shp2pgsql; then
+  brew-install postgis
+fi
+
 info "Installing imagemagick (if necessary)"
 if ! cmd convert; then
   brew-install imagemagick
@@ -44,10 +55,7 @@ fi
 info "Install gems (if necessary)"
 bundle install
 
-info "Setting up the database (if necessary)"
-bin/rails db:setup
-
-info "Setting up the database for test (if necessary)"
-RAILS_ENV=test bin/rails db:create
+info "Creating the database, migrating, installing seed data (if necessary)"
+bin/rails db:create db:migrate db:seed_if_necessary
 
 echo -e "${GREEN}>> You're all set up!${DEFAULT}"
