@@ -73,6 +73,33 @@ maintainable as possible against the Decidim core. Try to avoid hard core
 customizations which require lots of efforts to maintain over Decidim's core
 updates.
 
+## Equity data
+
+One of the main changes we made from the City of Helsinki site (other than the
+look and feel) is pulling in quantitative equity data from the City of 
+Seattle's Racial and Social Equity Index.
+
+http://data-seattlecitygis.opendata.arcgis.com/datasets/SeattleCityGIS::racial-and-social-equity-composite-index
+
+The Racial and Social Equity composite index combines information on race,
+ethnicity, and related demographics with data on socioeconomic and health
+disadvantages to identify where priority populations make up relatively large
+proportions of neighborhood residents. 
+
+Our hope is that incorporating and displaying this data empowers the steering
+committee and the public to make choices that more directly benefit the
+disadvantaged.
+
+### How to update the data source
+
+1. Download the shapefile from the above loink
+2. Convert it to an sql dump: `shp2pgsql -d -I -m db/equity_column_mapping 9362e3b7-801d-4b8e-9a79-cf70afe2d10d202037-1-12y9ny2.x61ol.shp equity_composites > db/equity_composites.sql`
+3. Run `bin/rails db:seed:equity_composites`
+
+If you get an error about DropGeometryColumn, feel free to remove that line from
+the sql dump and re-run. It doesn't seem to be necessary sa the entire table is
+about to be dropped.
+
 ## Deploying
 
 ### Setup
