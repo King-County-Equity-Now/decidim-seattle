@@ -39,7 +39,7 @@ module Decidim
         end
 
         def equity_quintile
-            (@proposal.equity_composite_index_percentile.round(2) * 5).floor() + 1 
+          (@proposal.equity_composite_index_percentile.round(2) * 5).floor() + 1 
         end
   
         # Render the proposal title
