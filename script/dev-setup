@@ -31,9 +31,15 @@ install-asdf-plugins
 info "Installing bundler (if necessary)"
 gem install bundler --conservative --version "$BUNDLER_VERSION"
 
-info "Installing postgres + postgis (if necessary)"
-brew-install postgresql
-brew-install postgis
+info "Installing postgres (if necessary)"
+if ! cmd psql; then
+  brew-install postgresql
+fi
+
+info "Installing postgis (if necessary)"
+if ! cmd shp2pgsql; then
+  brew-install postgis
+fi
 
 info "Installing imagemagick (if necessary)"
 if ! cmd convert; then
