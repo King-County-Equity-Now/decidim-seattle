@@ -77,9 +77,7 @@ updates.
 
 One of the main changes we made from the City of Helsinki site (other than the
 look and feel) is pulling in quantitative equity data from the City of 
-Seattle's Racial and Social Equity Index.
-
-http://data-seattlecitygis.opendata.arcgis.com/datasets/SeattleCityGIS::racial-and-social-equity-composite-index
+Seattle's [Racial and Social Equity Index](http://data-seattlecitygis.opendata.arcgis.com/datasets/SeattleCityGIS::racial-and-social-equity-composite-index).
 
 The Racial and Social Equity composite index combines information on race,
 ethnicity, and related demographics with data on socioeconomic and health
