@@ -17,11 +17,6 @@ class GeocodingValidator < ActiveModel::EachValidator
       if coordinates.present?
         record.latitude = coordinates.first
         record.longitude = coordinates.last
-
-        if record.respond_to? :equity_composite_index_percentile
-          equity_composite = EquityComposite.contains_point(record.longitude, record.latitude).first
-          record.equity_composite_index_percentile = equity_composite&.composite_index_percentage
-        end
       else
         record.errors.add(attribute, :invalid)
       end
