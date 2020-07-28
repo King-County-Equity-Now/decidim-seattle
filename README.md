@@ -91,6 +91,10 @@ If you need to run migrations, follow up with:
 
 https://devcenter.heroku.com/articles/git
 
+## Modifying Decidim module behavior
+
+If you need to change the behavior of classes in one of Decidim's modules, [learn more here](https://github.com/substantial/decidim-seattle/blob/add-readme-overriding/docs/MODIFYING_RUBY_ENGINE_FUNCTIONALITY.md).
+
 ## Urls
 
 - Staging: https://decidim-seattle-staging.herokuapp.com/

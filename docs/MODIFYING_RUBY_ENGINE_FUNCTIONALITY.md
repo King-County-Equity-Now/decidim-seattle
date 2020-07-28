@@ -4,13 +4,13 @@
 
 The Decidim project is organized into a large set of [modules](https://decidim.org/modules/). You can see what modules are being used by looking at the `decidim-seattle` [Gemfile](https://github.com/substantial/decidim-seattle/blob/master/Gemfile#L13-L31).
 
-According to their documentation,
+According to Decidim's documentation,
 
 > If you need to have some features that we don’t have yet, we recommend that you make a module. This is a Ruby on Rails engine with some APIs specific to Decidim (for registering with the menus, integration with spaces like Participatory Processes or Assemblies, with /admin or /api, etc).
 
 Organizing a larger feature set into a standalone module makes sense, but you might encounter a situation where you need to extend the behavior of an existing module.
 
-## How to extend an existing module class
+## How to modify an existing module class
 
 During development, it can be cumbersome to modify the contents of a module class directly, since it requires importing a development branch of the gem, updating the gem code directly, and releasing a new version of the gem, which might not necessarily be compatible with the `decidim-seattle` app. Therefore, in order to move quickly, you can override or extend the behavior of module classes.
 
