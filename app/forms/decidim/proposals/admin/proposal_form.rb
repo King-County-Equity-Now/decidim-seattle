@@ -62,10 +62,6 @@ module Decidim
           @scope ||= @scope_id ? current_participatory_space.scopes.find_by(id: @scope_id) : current_participatory_space.scope
         end
 
-        # def equity_composite_index_percentile
-        #   @equity_composite_index_percentile
-        # end
-
         # Scope identifier
         #
         # Returns the scope identifier related to the proposal

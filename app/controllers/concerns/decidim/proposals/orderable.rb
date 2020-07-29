@@ -16,7 +16,9 @@ module Decidim
         # Available orders based on enabled settings
         def available_orders
           @available_orders ||= begin
-            available_orders = %w(most_equitable random recent)
+            available_orders = []
+            available_orders << "most_equitable" if current_organization.show_equity_composite_index?
+            available_orders << "random" << "recent"
             available_orders << "most_voted" if most_voted_order_available?
             available_orders << "most_endorsed" if current_settings.endorsements_enabled?
             available_orders << "most_commented" if component_settings.comments_enabled?
@@ -29,7 +31,11 @@ module Decidim
           if order_by_votes?
             detect_order("most_voted")
           else
-            "most_equitable"
+            if current_organization.show_equity_composite_index?
+              "most_equitable"
+            end
+
+            "random"
           end
         end
 
