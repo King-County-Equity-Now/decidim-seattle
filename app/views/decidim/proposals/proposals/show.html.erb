@@ -37,7 +37,7 @@
           </figcaption>
           <ul>
             <li>
-              <% equity_quintile = (@proposal.equity_composite_index_percentile.round(2) * 5).floor() + 1 %>
+              <% equity_quintile = present(@proposal).equity_quintile %>
               <%= t("quintile#{equity_quintile}", scope: "decidim.proposals.equity") %>
             </li>
             <li>

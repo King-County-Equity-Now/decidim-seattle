@@ -151,6 +151,9 @@ module DecidimHelsinki
         ScopesHelperExtensions
       )
 
+      # Proposals extensions
+      Decidim::Proposals::ProposalPresenter.send(:include, EquityQuintilePresenterFixes)
+
       # Parser extensions
       Decidim::ContentParsers::ProposalParser.send(
         :include,
