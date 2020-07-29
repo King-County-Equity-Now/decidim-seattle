@@ -44,6 +44,10 @@ Alternately, if you'd like to run `script/dev-setup` every time before starting 
 
 `script/dev-start`
 
+## Running the tests
+
+`bundle exec rspec`
+
 ## Decidim Documentation and Administration Manual
 
 Documentation and administration manual for Decidim can be found from the
