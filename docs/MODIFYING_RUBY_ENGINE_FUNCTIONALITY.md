@@ -25,7 +25,7 @@ The approach for overriding is to duplicate the module class and place it in the
 
 For example, adding an implementation of `Decidim::Proposals::Admin:Permission` to  `app/permissions/decidim/proposals/admin/permissions.rb` would override the behavior of `permission.rb` found in the `decidim-proposals` gem. Placing the overriden file into the correct directory
 
-Note: This is not the recommended approach for the `decidim-seattle` project at this time, due to the fact that any updates from the main Decidim gems would not be picked up by th overridden files.
+Note: This is not the recommended approach for the `decidim-seattle` project at this time, due to the fact that any updates from the main Decidim gems would not be picked up by the overridden files.
 
 ### Extending
 
