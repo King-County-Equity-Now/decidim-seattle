@@ -39,7 +39,7 @@ in `app/presenters/concerns/equity_quintile_presenter_fixes.rb `
 ```ruby
 require 'active_support/concern'
 
-module EquityQuintilePresenterFixes
+module EquityQuintilePresenterExtensions
   extend ActiveSupport::Concern
 
   included do
@@ -55,5 +55,5 @@ in `config/application.rb#config.to_prepare`:
 
 ```ruby
 # Proposals extensions
-Decidim::Proposals::ProposalPresenter.send(:include, EquityQuintilePresenterFixes)
+Decidim::Proposals::ProposalPresenter.send(:include, EquityQuintilePresenterExtensions)
 ```

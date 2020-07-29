@@ -1,6 +1,6 @@
 require 'active_support/concern'
 
-module EquityCompositeIndexAdminFixes
+module AdminUpdateProposalEquityOverrides
   extend ActiveSupport::Concern
 
   included do
