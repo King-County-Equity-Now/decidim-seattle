@@ -64,8 +64,10 @@ gem "rubyXL", "~> 3.4", ">= 3.4.6"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
-
   gem "decidim-dev", DECIDIM_VERSION
+  gem "factory_bot_rails"
+  gem "rspec-rails"
+  gem "rspec-activemodel-mocks"
 end
 
 group :development do
@@ -85,10 +87,6 @@ group :production, :production_kuva, :production_ruuti, :production_discussion, 
   # https://github.com/resque/resque-scheduler/pull/661
   gem "resque", "~> 1.26"
   gem "resque-scheduler", "~> 4.0"
-end
-
-group :development, :test do
-  gem "rspec-rails"
 end
 
 group :test do
