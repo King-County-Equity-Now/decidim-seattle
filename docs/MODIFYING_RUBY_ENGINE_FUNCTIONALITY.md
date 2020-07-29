@@ -57,3 +57,7 @@ in `config/application.rb#config.to_prepare`:
 # Proposals extensions
 Decidim::Proposals::ProposalPresenter.send(:include, EquityQuintilePresenterExtensions)
 ```
+
+#### Naming
+
+For concerns that override functionality, use the `-Overrides` suffix. For concerns that extend the existing functionality, use `-Extensions`.
