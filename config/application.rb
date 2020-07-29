@@ -165,6 +165,9 @@ module DecidimHelsinki
       # See: https://github.com/decidim/decidim/pull/5313
       Decidim::NeedsTosAccepted.send(:include, TosRedirectFix)
 
+      # Model concern extensions
+      Decidim::Proposals::Proposal.send(:include, EquityCompositeIndexAutoAssigner)
+
       # Extra helpers
       Decidim::Assemblies::ContentBlocks::HighlightedAssembliesCell.send(
         :include,
