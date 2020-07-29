@@ -64,8 +64,10 @@ gem "rubyXL", "~> 3.4", ">= 3.4.6"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
-
   gem "decidim-dev", DECIDIM_VERSION
+  gem "factory_bot_rails"
+  gem "rspec-rails"
+  gem "rspec-activemodel-mocks"
 end
 
 group :development do
@@ -89,7 +91,6 @@ end
 
 group :test do
   gem "database_cleaner"
-  gem "rspec-rails"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
