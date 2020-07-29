@@ -153,6 +153,7 @@ module DecidimHelsinki
 
       # Proposals extensions
       Decidim::Proposals::ProposalPresenter.send(:include, EquityQuintilePresenterFixes)
+      Decidim::Proposals::Admin::UpdateProposal.send(:include, EquityCompositeIndexAdminFixes)
 
       # Parser extensions
       Decidim::ContentParsers::ProposalParser.send(
