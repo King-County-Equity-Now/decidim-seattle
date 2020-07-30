@@ -144,6 +144,7 @@ module DecidimHelsinki
       # Seattle Extensions and Overrides
       Decidim::Proposals::ProposalPresenter.send(:include, EquityQuintilePresenterExtensions)
       Decidim::Proposals::Admin::UpdateProposal.send(:include, AdminUpdateProposalEquityOverrides)
+      Decidim::Proposals::Admin::Permissions.send(:include, AdminPermissionsEquityOverrides)
       Decidim::Proposals::Proposal.send(:include, LocationBasedEquityAssignable)
 
       # City of Helsinki Extensions and Overrides
