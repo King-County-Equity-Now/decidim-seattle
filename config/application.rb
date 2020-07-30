@@ -141,6 +141,12 @@ module DecidimHelsinki
     #
     # Run before every request in development.
     config.to_prepare do
+      # Seattle Extensions and Overrides
+      Decidim::Proposals::ProposalPresenter.send(:include, EquityQuintilePresenterExtensions)
+      Decidim::Proposals::Admin::UpdateProposal.send(:include, AdminUpdateProposalEquityOverrides)
+      Decidim::Proposals::Proposal.send(:include, LocationBasedEquityAssignable)
+
+      # City of Helsinki Extensions and Overrides
       # Helper extensions
       Decidim::Comments::CommentsHelper.send(
         :include,
@@ -150,10 +156,6 @@ module DecidimHelsinki
         :include,
         ScopesHelperExtensions
       )
-
-      # Proposals extensions
-      Decidim::Proposals::ProposalPresenter.send(:include, EquityQuintilePresenterExtensions)
-      Decidim::Proposals::Admin::UpdateProposal.send(:include, AdminUpdateProposalEquityOverrides)
 
       # Parser extensions
       Decidim::ContentParsers::ProposalParser.send(
@@ -168,9 +170,6 @@ module DecidimHelsinki
       # Controller concern extensions
       # See: https://github.com/decidim/decidim/pull/5313
       Decidim::NeedsTosAccepted.send(:include, TosRedirectFix)
-
-      # Model concern extensions
-      Decidim::Proposals::Proposal.send(:include, LocationBasedEquityAssignable)
 
       # Extra helpers
       Decidim::Assemblies::ContentBlocks::HighlightedAssembliesCell.send(
