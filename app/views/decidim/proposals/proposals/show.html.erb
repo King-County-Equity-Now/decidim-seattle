@@ -28,7 +28,7 @@
       <% if component_settings.geocoding_enabled? %>
         <%= render partial: "decidim/shared/static_map", locals: { icon_name: "proposals", geolocalizable: @proposal } %>
       <% end %>
-      <% if @proposal.equity_composite_index_percentile != nil %>
+      <% if present(@proposal).show_equity? %>
         <figure>
           <figcaption class="text-uppercase">
             <strong>
@@ -37,8 +37,7 @@
           </figcaption>
           <ul>
             <li>
-              <% equity_quintile = present(@proposal).equity_quintile %>
-              <%= t("quintile#{equity_quintile}", scope: "decidim.proposals.equity") %>
+              <%= t("quintile#{present(@proposal).equity_quintile}", scope: "decidim.proposals.equity") %>
             </li>
             <li>
               <%= t("proposal_description", scope: "decidim.proposals.equity") %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_22_230518) do
+ActiveRecord::Schema.define(version: 2020_07_29_003849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -896,6 +896,7 @@ ActiveRecord::Schema.define(version: 2020_07_22_230518) do
     t.jsonb "colors", default: {}
     t.jsonb "smtp_settings"
     t.boolean "force_users_to_authenticate_before_access_organization", default: false
+    t.boolean "show_equity_composite_index", default: true, null: false
     t.index ["host"], name: "index_decidim_organizations_on_host", unique: true
     t.index ["name"], name: "index_decidim_organizations_on_name", unique: true
   end

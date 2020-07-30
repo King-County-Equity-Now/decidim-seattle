@@ -66,7 +66,7 @@ module Decidim
     end
 
     def equity?
-      model.equity_composite_index_percentile != nil
+      current_organization.show_equity_composite_index? && model.equity_composite_index_percentile != nil
     end
 
     def equity_name
