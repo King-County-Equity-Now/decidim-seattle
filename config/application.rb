@@ -170,7 +170,7 @@ module DecidimHelsinki
       Decidim::NeedsTosAccepted.send(:include, TosRedirectFix)
 
       # Model concern extensions
-      Decidim::Proposals::Proposal.send(:include, EquityCompositeIndexAutoAssigner)
+      Decidim::Proposals::Proposal.send(:include, LocationBasedEquityAssignable)
 
       # Extra helpers
       Decidim::Assemblies::ContentBlocks::HighlightedAssembliesCell.send(

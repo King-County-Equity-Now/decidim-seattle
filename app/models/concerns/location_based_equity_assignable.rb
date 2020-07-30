@@ -1,4 +1,4 @@
-module EquityCompositeIndexAutoAssigner
+module LocationBasedEquityAssignable
   extend ActiveSupport::Concern
 
   included do
