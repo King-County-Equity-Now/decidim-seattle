@@ -1,6 +1,6 @@
 require 'active_support/concern'
 
-module AdminPermissionsEquityOverrides
+module AdminPermissionsOverrides
   extend ActiveSupport::Concern
 
   included do
