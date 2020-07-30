@@ -145,6 +145,8 @@ module DecidimHelsinki
       Decidim::Proposals::ProposalPresenter.send(:include, EquityQuintilePresenterExtensions)
       Decidim::Proposals::Admin::UpdateProposal.send(:include, AdminUpdateProposalEquityOverrides)
       Decidim::Proposals::Proposal.send(:include, LocationBasedEquityAssignable)
+      Decidim::Admin::OrganizationForm.send(:include, OrganizationFormExtensions)
+      Decidim::Admin::UpdateOrganization.send(:include, UpdateOrganizationOverrides)
 
       # City of Helsinki Extensions and Overrides
       # Helper extensions
