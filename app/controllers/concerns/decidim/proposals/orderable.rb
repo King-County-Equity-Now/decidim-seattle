@@ -16,13 +16,11 @@ module Decidim
         # Available orders based on enabled settings
         def available_orders
           @available_orders ||= begin
-            available_orders = []
+            available_orders = %w(random recent)
+            # begin decidim-seattle modificaton
             available_orders << "most_equitable" if current_organization.show_equity_composite_index?
-            available_orders << "random" << "recent"
+            # end decidim-seattle modification
             available_orders << "most_voted" if most_voted_order_available?
-            available_orders << "most_endorsed" if current_settings.endorsements_enabled?
-            available_orders << "most_commented" if component_settings.comments_enabled?
-            available_orders << "most_followed" << "with_more_authors"
             available_orders
           end
         end
@@ -31,10 +29,6 @@ module Decidim
           if order_by_votes?
             detect_order("most_voted")
           else
-            if current_organization.show_equity_composite_index?
-              "most_equitable"
-            end
-
             "random"
           end
         end
@@ -49,22 +43,16 @@ module Decidim
 
         def reorder(proposals)
           case order
+          # begin decidim-seattle modificaton
           when "most_equitable"
             proposals.order('equity_composite_index_percentile DESC nulls last')
-          when "most_commented"
-            proposals.left_joins(:comments).group(:id).order(Arel.sql("COUNT(decidim_comments_comments.id) DESC"))
-          when "most_endorsed"
-            proposals.order(endorsements_count: :desc)
-          when "most_followed"
-            proposals.left_joins(:follows).group(:id).order(Arel.sql("COUNT(decidim_follows.id) DESC"))
-          when "most_voted"
-            proposals.order(proposal_votes_count: :desc)
+            # end decidim-seattle modification
           when "random"
             proposals.order_randomly(random_seed)
+          when "most_voted"
+            proposals.order(proposal_votes_count: :desc)
           when "recent"
             proposals.order(published_at: :desc)
-          when "with_more_authors"
-            proposals.order(coauthorships_count: :desc)
           end
         end
       end
