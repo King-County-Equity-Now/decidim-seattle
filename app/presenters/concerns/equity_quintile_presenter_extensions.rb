@@ -1,6 +1,6 @@
 require 'active_support/concern'
 
-module EquityQuintilePresenterFixes
+module EquityQuintilePresenterExtensions
   extend ActiveSupport::Concern
 
   included do
