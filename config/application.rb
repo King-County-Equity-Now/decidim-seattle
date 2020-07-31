@@ -94,6 +94,7 @@ module DecidimHelsinki # TODO: rename this to something Seattle-specific
       # Seattle Extensions and Overrides
       Decidim::Proposals::ProposalPresenter.send(:include, EquityQuintilePresenterExtensions)
       Decidim::Proposals::Admin::UpdateProposal.send(:include, AdminUpdateProposalEquityOverrides)
+      Decidim::Proposals::Admin::Permissions.send(:include, AdminPermissionsOverrides)
       Decidim::Proposals::Proposal.send(:include, LocationBasedEquityAssignable)
       Decidim::Admin::OrganizationForm.send(:include, OrganizationFormExtensions)
       Decidim::Admin::UpdateOrganization.send(:include, UpdateOrganizationOverrides)
