@@ -29,7 +29,7 @@ module Decidim
           if order_by_votes?
             detect_order("most_voted")
           else
-            "random"
+            "recent"
           end
         end
 
