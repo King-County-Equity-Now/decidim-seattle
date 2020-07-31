@@ -119,6 +119,10 @@ If you need to run migrations, follow up with:
 
 `heroku run bin/rails db:migrate`
 
+If the site doesn't come back up, check out `heroku logs`. If it says it took took long to start
+it probably needs a restart with `heroku restart`. (There's a 240mb pdf generator binary in
+decidim-initiatives that makes the first boot take forever.)
+
 ### Viewing logs
 
 `heroku logs`
