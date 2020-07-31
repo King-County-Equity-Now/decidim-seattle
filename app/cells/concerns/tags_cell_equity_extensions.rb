@@ -14,6 +14,10 @@ module TagsCellEquityExtensions
 
     private
 
+    def proposal_path
+      resource_locator(model).path
+    end
+
     def equity?
       current_organization.show_equity_composite_index? &&
         model.has_attribute?(:equity_composite_index_percentile) &&

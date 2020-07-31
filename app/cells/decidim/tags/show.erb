@@ -1,7 +1,8 @@
-<%= content_tag :ul, class: tags_classes do %>
-  <%= cell("decidim/tags", model).equity %>
-
-  <%= cell("decidim/tags", model).category %>
-
+<div class="scope_and_equity_block">
   <%= cell("decidim/tags", model).scope %>
+  <%= cell("decidim/tags", model).equity %>
+</div>
+
+<%= content_tag :ul, class: tags_classes do %>
+  <%= cell("decidim/tags", model).category %>
 <% end %>

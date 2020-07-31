@@ -16,11 +16,12 @@ en:
           recent: Recent
           with_more_authors: With more authors
       equity:
-        card_tag_title: 'Equity Impact:'
-        proposal_title: Equity Impact
-        proposal_description: The Equity Impact is determined from the location of the proposal and is based on the City of Seattle's Racial and Social Equity Composite Index
+        card_tag_title: 'Impact Probability:'
+        card_more_info: What is this?
+        proposal_title: Impact Probability
+        proposal_description: The location of each proposal is used to reference the City of Seattle's Racial and Social Equity Composite Index to help determine the potential impact on communities. Because data has limitations, the measure presented here only tells part of a larger story.
         quintile1: Lowest
-        quintile2: Second lowest
+        quintile2: Low
         quintile3: Middle
-        quintile4: Second highest
+        quintile4: High
         quintile5: Highest
