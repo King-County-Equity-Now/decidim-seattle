@@ -113,7 +113,7 @@ about to be dropped.
 
 ### Deploying staging
 
-`git push heroku-staging master`
+`git push heroku-staging main`
 
 If you need to run migrations, follow up with:
 
