@@ -5,6 +5,7 @@ services:
       context: .
       args:
         rails_env: development
+    network_mode: bridge
     volumes:
       - .:/code
     environment:
@@ -16,11 +17,15 @@ services:
       - pg
       - redis
   pg:
-    image: postgres
+    image: postgis/postgis:12-3.0
+    network_mode: bridge
     volumes:
       - pg-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
   redis:
     image: redis
+    network_mode: bridge
     volumes:
       - redis-data:/data
 volumes:
