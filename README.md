@@ -163,4 +163,19 @@ the comment in `decidim.rb` when this issue is resolved.
 
 ### Social network authentication
 
-Decidim supports single sign-on with Google, Facebook, Twitter, etc, but [it needs to be configured](https://github.com/decidim/decidim/blob/master/docs/services/social_providers.md).
+Decidim supports single sign-on with [a variety of social providers](https://github.com/decidim/decidim/blob/master/docs/services/social_providers.md) out of the box. Seattle currently has Google, Facebook, and Twitter login enabled (as defined in `secrets.yml`).
+
+The associated API keys for these services are stored in Heroku environment variables. 
+
+#### Local testing
+
+If you want to test SSO locally, you'll need to generate your own credentials. The [Decidim docs](https://github.com/decidim/decidim/blob/master/docs/services/social_providers.md) will walk you through the process of creating those.
+
+Once generated, copy the correct ENV variable name from `secrets.yml` and place the API key in  `config/heroku_env.rb`. For example:
+
+```
+ENV["OMNIAUTH_FACEBOOK_APP_ID"] = 'key'
+ENV["OMNIAUTH_FACEBOOK_APP_SECRET"] = 'secret'
+```
+
+Note: when creating Twitter OAuth credentials, make sure to list http://localhost:3000/users/auth/twitter/callback as a Callback URL.
