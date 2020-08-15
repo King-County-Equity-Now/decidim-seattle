@@ -58,8 +58,8 @@ bundle install
 info "Creating the database, migrating, installing seed data (if necessary)"
 bin/rails db:create db:migrate db:seed_if_necessary
 
-info "Creating heroku_env.rb file to store local credentials (if necessary)"
-FILE="$DIR"/config/heroku_env.rb
+info "Creating development_env.rb file to store local credentials (if necessary)"
+FILE="$DIR"/config/development_env.rb
 if [ ! -f "$FILE" ]; then
     echo "# This file contains the ENV vars necessary to run the app locally." >> $FILE
     echo "# Some of these values are sensitive, and some are developer specific." >> $FILE

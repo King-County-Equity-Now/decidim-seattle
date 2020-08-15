@@ -5,9 +5,9 @@ require_relative "boot"
 require "rails/all"
 require "cldr"
 
-# add local environment variables
+# add local environment variables for dev environment
 # http://blog.leshill.org/blog/2010/11/02/heroku-environment-variables.html
-load(File.expand_path('../heroku_env.rb', __FILE__))
+load(File.expand_path('../development_env.rb', __FILE__))
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
