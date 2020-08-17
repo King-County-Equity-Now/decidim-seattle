@@ -86,5 +86,6 @@ WORKDIR $APP_HOME
 ADD . $APP_HOME
 
 RUN bundle exec rake DATABASE_URL=postgresql://user:pass@127.0.0.1/dbname assets:precompile
+RUN bin/rails db:create db:migrate db:seed_if_necessary
 
 ENTRYPOINT ["./entrypoints/docker.sh"]
