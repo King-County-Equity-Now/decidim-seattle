@@ -171,7 +171,7 @@ The associated API keys for these services are stored in Heroku environment vari
 
 If you want to test SSO locally, you'll need to generate your own credentials. The [Decidim docs](https://github.com/decidim/decidim/blob/master/docs/services/social_providers.md) will walk you through the process of creating those.
 
-Once generated, copy the correct ENV variable name from `secrets.yml` and place the API key in  `config/heroku_env.rb`. For example:
+Once generated, copy the correct ENV variable name from `secrets.yml` and place the API key in  `config/development_env.rb`. For example:
 
 ```
 ENV["OMNIAUTH_FACEBOOK_APP_ID"] = 'key'

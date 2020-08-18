@@ -37,4 +37,4 @@ schema.json
 app/assets/javascripts/decidim/comments/bundle.js.map
 
 # Local dev secrets
-config/heroku_env.rb
+config/development_env.rb
