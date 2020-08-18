@@ -67,4 +67,7 @@ if [ ! -f "$FILE" ]; then
     echo "# DO NOT CHECK THIS FILE INTO VERSION CONTROL!" >> $FILE
 fi
 
+info "Creating the database, migrating, installing seed data (if necessary)"
+bin/rails db:create db:migrate db:seed_if_necessary
+
 echo -e "${GREEN}>> You're all set up!${DEFAULT}"
