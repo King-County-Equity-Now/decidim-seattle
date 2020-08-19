@@ -36,6 +36,14 @@ https://github.com/decidim/decidim/blob/master/docs/getting_started.md
 Then install PostGIS:
 https://postgis.net/install/
 
+### Setup (Docker)
+
+Run `docker-compose build` and then `docker-compose up`. You should be able to go to http://localhost:3000 when the process is complete. The initial build and first page load will take some time.
+
+The Dockerfile will create a postgres database (pg-data) and redis (redis-data) directories that will be persistent across containers.
+
+To enter the container in a bash environment, run `bin/docker bash`.
+
 ## Running the server
 
 `bin/rails server`
