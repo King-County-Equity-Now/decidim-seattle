@@ -27,7 +27,6 @@ public/uploads
 
 # Ignore local environment variables
 /.rbenv-vars
-/config/heroku_env.rb
 
 # Ignore webpack stuff
 /webpack.report.html
