@@ -9,48 +9,11 @@ Please check out their README's and documentation for instructions:
 
 ## Setup
 
-### Setup (mac)
-
-Run `script/dev-setup` and follow the instructions until you see:
-
-`>> You're all set up!`
-
-Note: people sometimes run into problems with database connection issues. If that's the case, chances are postgres is shutting down right after starting up and to find out why, run `brew info postgresql` and check out the instructions on how to start postgresql manually and try that. That's usually enough to get people unblocked.
-
-What all it's going to do:
-
-- Install the asdf package manager (if you prefer rbenv, check out the windows/linux setup below)
-- Install Ruby via asdf
-- Install PostgreSQL, PostGIS, ImageMagick via homebrew
-- Create and migrate the database
-- Seed the database with sample data if it's empty
-
-It's intended to be an idempotent script, so you can run it multiple times and it'll only change
-what needs to be changed, so feel free to run it often.
-
-### Setup (windows/linux, or people who hate the streamlined script for whatever reason)
-
-Please see the core Decidim docs:
-https://github.com/decidim/decidim/blob/master/docs/getting_started.md
-
-Then install PostGIS:
-https://postgis.net/install/
-
-### Setup (Docker)
-
 Run `bin/docker build` and then `bin/docker start`. You should be able to go to http://localhost:3000 when the process is complete. The initial build and first page load will take some time.
 
 The Dockerfile will create a postgres database (pg-data) and redis (redis-data) directories that will be persistent across containers.
 
-To enter the container in a bash environment, run `bin/docker bash`. To enter the postgres container using psql, run `bin/docker pg`
-
-## Running the server
-
-`bin/rails server`
-
-Alternately, if you'd like to run `script/dev-setup` every time before starting the server, you can do that with:
-
-`script/dev-start`
+To enter the container in a bash environment, run `bin/docker bash`. To enter the postgres container using psql, run `bin/docker pg`. You can run rails commands with `bin/docker rails [command to run]`. Run `bin/docker` alone to see all the available options.
 
 ## Running the tests
 

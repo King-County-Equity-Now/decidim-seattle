@@ -1,7 +1,6 @@
-FROM ruby:2.7
-MAINTAINER david.morcillo@codegram.com
+FROM ruby:2.6.3
 
-ARG rails_env=production
+ARG rails_env=development
 ARG secret_key_base=
 
 ENV APP_HOME /code
@@ -79,7 +78,7 @@ RUN YARN_VERSION=$(curl -sSL --compressed https://yarnpkg.com/latest-version) \
 
 ADD Gemfile /tmp/Gemfile
 ADD Gemfile.lock /tmp/Gemfile.lock
-RUN cd /tmp && bundle install
+RUN cd /tmp && gem install bundler && bundle install
 
 RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
