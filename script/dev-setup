@@ -56,7 +56,9 @@ info "Install gems (if necessary)"
 bundle install
 
 info "Creating the database, migrating, installing seed data (if necessary)"
-bin/rails db:create db:migrate db:seed_if_necessary
+bin/rails db:create db:migrate
+# Run in a separate command to avoid https://github.com/rails/rails/issues/29112
+bin/rails db:seed_if_necessary
 
 info "Creating development_env.rb file to store local credentials (if necessary)"
 FILE="$DIR"/config/development_env.rb
