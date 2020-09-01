@@ -46,7 +46,25 @@ Alternately, if you'd like to run `script/dev-setup` every time before starting 
 
 ## Running the tests
 
+The Helsinki project this was forked from has no tests for the Ruby code, and some minimal testing for the [`decidim-comments` React app](https://github.com/King-County-Equity-Now/decidim-seattle/tree/main/vendor/decidim-comments/app/frontend). We've added a few tests using [`RSpec`](https://rspec.info/) and [`rspec-rails`](https://github.com/rspec/rspec-rails/tree/4-0-maintenance).
+
+### Ruby
+
+To test the ruby code, run
+
 `bundle exec rspec`
+
+Check out the following resources to learn more about our test setup:
+
+* [`RSpec`](https://rspec.info/)
+* [`rspec-rails`](https://github.com/rspec/rspec-rails/tree/4-0-maintenance)
+* [Ruby's Testing Guide](https://guides.rubyonrails.org/testing.html). We don't use Ruby's built in testing framework, but the concepts and classes are helpful to better understand what `rspec-rails` provides.
+
+### JavaScript
+
+In the unlikely event that you need to modify [the `decidim-comments` React app](https://github.com/King-County-Equity-Now/decidim-seattle/tree/main/vendor/decidim-comments/app/frontend), or a new JS component, run
+
+`npm install && npm test`
 
 ## Decidim Documentation and Administration Manual
 
