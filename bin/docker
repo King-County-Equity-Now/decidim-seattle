@@ -1,0 +1,46 @@
+#!/bin/bash
+
+IMAGES=$(docker-compose images | grep "$(basename $PWD)_app" | awk '{ print $2 }')
+
+case ${1} in
+    rm)
+        # Removes the containers and images
+        docker-compose stop --time 30 && \
+            docker-compose rm -f && \
+            docker rmi "${IMAGES}"
+        ;;
+
+    build)
+        $0 rm
+        docker-compose build
+        ;;
+
+    start)
+        # Starts the container in detached mode
+        docker-compose up -d && $0 logs
+        ;;
+
+    stop)
+        docker-compose stop --time 30
+        ;;
+
+    logs)
+        docker-compose logs -f
+        ;;
+
+    bash)
+        docker exec -it --detach-keys 'ctrl-q,q' $(echo "$(basename $PWD)_app_1" | sed "s/[^a-zA-Z0-9_-]//g") bash
+        ;;
+
+    pg)
+        docker exec -it --detach-keys 'ctrl-q,q' $(echo "$(basename $PWD)_pg_1" | sed "s/[^a-zA-Z0-9_-]//g") psql -Upostgres
+        ;;
+
+    rails)
+        docker exec -it --detach-keys 'ctrl-q,q' $(echo "$(basename $PWD)_app_1" | sed "s/[^a-zA-Z0-9_-]//g") bash -c "bin/rails ${@:2}"
+        ;;
+
+    *)
+        echo 'Please enter a valid command. Options are rm, build, start, stop, logs, bash, pg, and rails'
+        ;;
+esac
