@@ -45,6 +45,16 @@ following URLs:
 - https://decidim.org/docs/
 - https://docs.decidim.org/
 
+### Customizing Content
+
+#### Configurable Content
+Explore the Admin panel (`/admin`).  Many parts of Decidim allow you to directly override the content, such as the "Help" content displayed above processes.  If available, use the Admin panel option for overriding content.
+
+#### Decidim Core/Module Content
+If you don't see a UI to update the content elsewhere in the Admin panel, you can override arbitrary content with the "Term Customizer" section (`/admin/term_customizer`). For more information on Term Customizer, check out their [docs](https://github.com/mainio/decidim-module-term_customizer/blob/master/README.md).  "Add multiple" allows you to identify "term keys" (yaml paths) based on the text content.
+
+Once the content is updated in "Term Customizer", you'll need to restart the server for changes to go into effect (`heroku restart`).
+
 ## Why Decidim?
 
 We considered both [Consul](https://github.com/consul/consul) and Decidim,
