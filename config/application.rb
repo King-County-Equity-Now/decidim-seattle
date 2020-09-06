@@ -21,7 +21,7 @@ Bundler.require(*Rails.groups)
 # Require the application specific engines for the custom verifications.
 require File.expand_path("../lib/engines", __dir__)
 
-module DecidimHelsinki # TODO: rename this to something Seattle-specific
+module DecidimSeattle
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
@@ -67,11 +67,7 @@ module DecidimHelsinki # TODO: rename this to something Seattle-specific
     config.color_profile = "black"
 
     # The feedback email in the footer of the site
-    config.feedback_email = "omastadi@hel.fi"
-
-    # This defines an email address for automatically generated user accounts,
-    # e.g. through the Suomi.fi or MPASSid authentications.
-    config.auto_email_domain = "omastadi.hel.fi"
+    config.feedback_email = "info@kingcountyequitynow.com"
 
     # Passes a block of code to do after initialization.
     config.after_initialize do
@@ -118,12 +114,6 @@ module DecidimHelsinki # TODO: rename this to something Seattle-specific
       Decidim::ScopesHelper.send(
         :include,
         ScopesHelperExtensions
-      )
-
-      # Parser extensions
-      Decidim::ContentParsers::ProposalParser.send(
-        :include,
-        Helsinki::ProposalParserExtensions
       )
 
       # View extensions
