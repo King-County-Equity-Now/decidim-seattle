@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
 
     # Next stop: Let's check whether auth is ok
     unless user_signed_in?
-      flash[:warning] = I18n.t("auth.sign_in_with_tunnistamo")
+      flash[:warning] = I18n.t("auth.sign_in")
       return redirect_to decidim.new_user_session_path
     end
   end
