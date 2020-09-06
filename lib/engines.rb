@@ -11,5 +11,3 @@
 #   same level of the engine class file
 # - Make sure also the "lib" directory has a ".keep" file in it in order to keep
 #   it in the version control
-
-require_relative "engines/helsinki/budgeting_verification"
