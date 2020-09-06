@@ -25,7 +25,7 @@ en:
     models:
       decidim/plans/plan: Plan
   auth:
-    sign_in_with_tunnistamo: 'Use Tunnistamo to sign in'
+    sign_in: 'Please sign in before proceeding'
   decidim:
     authorization_handlers:
       admin:

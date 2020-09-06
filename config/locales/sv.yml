@@ -25,7 +25,7 @@ sv:
     models:
       decidim/plans/plan: Plan
   auth:
-    sign_in_with_tunnistamo: 'Logga in med Tunnistamo'
+    sign_in: 'Logga in'
   decidim:
     authorization_handlers:
       admin:
