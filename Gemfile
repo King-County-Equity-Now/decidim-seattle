@@ -6,81 +6,55 @@ ruby RUBY_VERSION
 
 # Run updates by following the Decidim upgrade instructions:
 # https://github.com/decidim/decidim/blob/master/docs/getting_started.md#keeping-your-app-up-to-date
-DECIDIM_VERSION = "0.19.0"
-DECIDIM_MODULE_VERSION = "~> 0.19.0"
+DECIDIM_VERSION = { git: "https://github.com/decidim/decidim", branch: "release/0.21-stable" }
+DECIDIM_MODULE_VERSION = "0.21.0"
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-initiatives", DECIDIM_VERSION
 
-gem "decidim-access_requests", DECIDIM_MODULE_VERSION
-gem "decidim-antivirus", DECIDIM_MODULE_VERSION
-gem "decidim-mpassid", DECIDIM_MODULE_VERSION
-gem "decidim-process_groups_content_block", DECIDIM_MODULE_VERSION
-gem "decidim-suomifi", DECIDIM_MODULE_VERSION
-gem "decidim-term_customizer", DECIDIM_MODULE_VERSION
+# Change term_customizer dependency to ruby-gems' when term-customizer is compatible with DECIDIM_VERSION
+gem "decidim-term_customizer", git: "https://github.com/mainio/decidim-module-term_customizer", branch: "0.21-stable"
 
 # Install the git modules until they have an actual release
-gem "decidim-accountability_simple", git: "https://github.com/mainio/decidim-module-accountability_simple"
-gem "decidim-apiauth", git: "https://github.com/mainio/decidim-module-apiauth"
-gem "decidim-combined_budgeting", git: "https://github.com/mainio/decidim-module-combined_budgeting"
-gem "decidim-plans", git: "https://github.com/mainio/decidim-module-plans", branch: "0.19-stable"
-gem "decidim-redirects", git: "https://github.com/mainio/decidim-module-redirects"
+gem "decidim-plans", git: "https://github.com/mainio/decidim-module-plans"
+gem 'decidim-navbar_links', git: "https://github.com/OpenSourcePolitics/decidim-module-navbar_links", branch: "0.21-stable"
 
-# Install the improved budgeting module until these improvements are hopefully
-# merged to the core.
-gem "decidim-budgets_enhanced", git: "https://github.com/OpenSourcePolitics/decidim-module-budgets_enhanced"
-
-# Issue with core dependencies not being required, see:
-# https://github.com/decidim/decidim/issues/5257
-gem "wicked_pdf", "~> 1.4"
-gem "wkhtmltopdf-binary", "~> 0.12"
-
-# For the documents authorization handler
-gem "henkilotunnus"
+gem "puma"
+gem "uglifier"
+gem "wicked_pdf"
+gem "wkhtmltopdf-binary"
 gem "ruby-cldr", "~> 0.3.0"
-
 gem "font-awesome-rails", "~> 4.7.0"
 
-gem "puma", "~> 3.12"
-gem "uglifier", "~> 4.1"
-
-# Used in production for seed data
-gem "faker", "~> 1.9"
-
-# HKI authentication
-gem "omniauth_openid_connect", "~> 0.3"
+# This module seems useful, but is still on Decidim 0.19.
+#gem "decidim-combined_budgeting", git: "https://github.com/mainio/decidim-module-combined_budgeting"
 
 # Postgis
 gem 'activerecord-postgis-adapter'
-
-# HKI import
-# Roo is not currently compatible with RubyZip 2.0+ which is now a dependency of
-# decidim-core.
-# See: https://github.com/roo-rb/roo/pull/515
-# gem "roo", "~> 2.8"
 
 # HKI export
 gem "rubyXL", "~> 3.4", ">= 3.4.6"
 
 group :development, :test do
-  gem "byebug", "~> 11.0", platform: :mri
+  gem "byebug", platform: :mri
   gem "decidim-dev", DECIDIM_VERSION
   gem "factory_bot_rails"
   gem "rspec-rails"
+  gem "faker", "1.9.5"
   gem "rspec-activemodel-mocks"
 end
 
 group :development do
-  gem "letter_opener_web", "~> 1.3"
-  gem "listen", "~> 3.1"
-  gem "spring", "~> 2.0"
-  gem "spring-watcher-listen", "~> 2.0"
-  gem "web-console", "~> 3.5"
+  gem "letter_opener_web"
+  gem "listen"
+  gem "spring"
+  gem "spring-watcher-listen"
+  gem "web-console"
 end
 
-group :production, :production_kuva, :production_ruuti, :production_discussion, :staging do
-  gem "fog-aws", "~> 3.6"
-  gem "dotenv-rails", "~> 2.1", ">= 2.1.1"
+group :production, :staging do
+  gem "fog-aws"
+  gem "dotenv-rails"
 
   # resque-scheduler still depends on resque ~> 1.25
   # Keep an eye on:
