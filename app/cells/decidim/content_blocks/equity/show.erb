@@ -9,5 +9,10 @@
   </div>
   <div class="row" id="equity-learn-more">
     <div class="columns small-centered small-10 smallmedium-8 medium-6 large-4">
-        <%= link_to t("button_title", scope: "decidim.content_blocks.equity"), target: "_blank", "https://www.seattle.gov/rsji", class: "button expanded hollow button--sc home-section__cta" %>  </div>
+        <%= link_to "https://www.seattle.gov/rsji", target: "_blank", class: "button expanded hollow button--sc" do %>
+          <%= t("button_title", scope: "decidim.content_blocks.equity") %>
+          <i class="fa fa-external-link" style="vertical-align: text-bottom;"></i>
+        <% end %>
+    </div>
+  </div>
 </section>
