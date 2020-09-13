@@ -26,3 +26,8 @@
 html.js .hide-on-load{
   display: none;
 }
+
+// Make equity info tooltips easier to read
+.tooltip {
+  max-width: 500px;
+}

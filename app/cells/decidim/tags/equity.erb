@@ -1,4 +1,6 @@
 <span class="equity_score"><%= equity_name %></span>
 |
-<a href="<%= proposal_path %>"><%= t("card_more_info", scope: "decidim.proposals.equity") %></a>
+<span tabindex="0" aria-haspopup="true" data-tooltip="true" data-keep-on-hover="true" data-click-open="false" data-container="body" data-disable-hover="false" class="has-tip equity_info" title="<%= t("proposal_description", scope: "decidim.proposals.equity") %>">
+  <%= t("card_more_info", scope: "decidim.proposals.equity") %>
+</span>
 <br />
