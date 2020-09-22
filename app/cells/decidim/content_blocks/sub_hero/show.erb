@@ -6,10 +6,11 @@
       </div>
       <% unless current_user %>
         <% if Devise.mappings[:user].registerable? %>
-          <%= link_to decidim.new_user_registration_path, class: "button--sc link subhero-cta" do %>
+        <div class="columns small-centered small-10 smallmedium-8 medium-6 large-4" >
+          <%= link_to decidim.new_user_registration_path, class: "button expanded hollow button--sc home-section__cta" do %>
             <%= t("decidim.pages.home.sub_hero.register") %>
-            <%= icon "chevron-right", aria_hidden: true, role: "img" %>
           <% end %>
+           </div>
         <% end %>
       <% end %>
     </div>
