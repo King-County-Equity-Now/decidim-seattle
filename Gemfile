@@ -30,6 +30,10 @@ gem "decidim-redirects", git: "https://github.com/mainio/decidim-module-redirect
 # merged to the core.
 gem "decidim-budgets_enhanced", git: "https://github.com/OpenSourcePolitics/decidim-module-budgets_enhanced"
 
+# SMS Authentication
+gem "omniauth-auth0"
+gem "omniauth-rails_csrf_protection"
+
 # Issue with core dependencies not being required, see:
 # https://github.com/decidim/decidim/issues/5257
 gem "wicked_pdf", "~> 1.4"
