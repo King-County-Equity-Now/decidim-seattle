@@ -93,6 +93,9 @@ module DecidimHelsinki # TODO: rename this to something Seattle-specific
                   position: 3,
                   active: :inclusive
       end
+      # Override so that "Participate" will go directly to the current process
+      # if there is only one process
+      Decidim::ParticipatoryProcesses::ParticipatoryProcessesController.send(:include, ParticipatoryProcessesControllerExtensions)
     end
 
     # See:
@@ -143,6 +146,7 @@ module DecidimHelsinki # TODO: rename this to something Seattle-specific
         :include,
         Decidim::SanitizeHelper
       )
+
     end
   end
 end

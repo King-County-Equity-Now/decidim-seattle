@@ -488,7 +488,7 @@ $datetime-bg: $primary;
   color: $anchor-color;
 
   @include breakpoint(small only){
-    word-break: break-all;
+    word-break: normal;
   }
 
   &:hover{
