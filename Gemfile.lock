@@ -1068,8 +1068,8 @@ DEPENDENCIES
   puma (~> 4.3.3)
   resque (~> 1.26)
   resque-scheduler (~> 4.0)
-  rspec-activemodel-mocks
   roo (~> 2.8)
+  rspec-activemodel-mocks
   rspec-rails
   ruby-cldr (~> 0.3.0)
   rubyXL (~> 3.4, >= 3.4.6)
