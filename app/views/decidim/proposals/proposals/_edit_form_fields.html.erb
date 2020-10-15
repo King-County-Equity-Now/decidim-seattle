@@ -21,7 +21,8 @@
 
 <% if @form.categories&.any? %>
   <div class="field">
-    <%= form.categories_select :category_id, @form.categories, prompt: t("decidim.proposals.proposals.edit.select_a_category") %>
+    <%#= form.categories_select :category_id, @form.categories, prompt: t("decidim.proposals.proposals.edit.select_a_category") %>
+    <%= form.select :category_id, options_for_select(@form.categories.map {|c| [translated_attribute(c.name), c.id]}), {}, {:multiple => true } %>
   </div>
 <% end %>
 

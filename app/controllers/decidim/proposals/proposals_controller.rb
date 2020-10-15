@@ -62,7 +62,6 @@ module Decidim
         enforce_permission_to :create, :proposal
         @step = :step_3
         @form = form(ProposalForm).from_params(params)
-
         # Create proposal for the view in case the creation fails. This needs
         # to be outside of the following block since it's a local variable for
         # this class and not the one being accessed inside the block.
@@ -75,7 +74,6 @@ module Decidim
         ).merge(
           component: current_component
         ))
-
         # Add coauthorship to the new proposal
         user_group ||= Decidim::UserGroup.find_by(
           organization: current_user.organization,

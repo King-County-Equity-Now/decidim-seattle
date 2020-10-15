@@ -4,8 +4,10 @@ module TagsCellEquityExtensions
   extend ActiveSupport::Concern
 
   included do
+    include Cells::Decidim::AddCategoriesOverrides
+
     def show
-      render if category? || scope? || equity?
+      render #if category? || scope? || equity?
     end
 
     def equity

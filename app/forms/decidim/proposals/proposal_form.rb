@@ -31,7 +31,7 @@ module Decidim
       #
       # Returns a Decidim::Category
       def category
-        @category ||= categories.find_by(id: category_id)
+        @category ||= Decidim::Category.where(id: category_id) #find_by(id: category_id)
       end
 
       # Finds the Scope from the given decidim_scope_id, uses participatory space scope if missing.

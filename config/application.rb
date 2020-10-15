@@ -111,6 +111,9 @@ module DecidimHelsinki # TODO: rename this to something Seattle-specific
       Decidim::Admin::OrganizationForm.send(:include, OrganizationFormExtensions)
       Decidim::Admin::UpdateOrganization.send(:include, UpdateOrganizationOverrides)
       Decidim::TagsCell.send(:include, TagsCellEquityExtensions)
+      Decidim::Proposals::Proposal.send(:include, Proposals::AddMultipleCategoriesOverrides)
+      Decidim::TagsCell.send(:include, Cells::Decidim::AddCategoriesOverrides)
+      Decidim::Proposals::UpdateProposal.send(:include, UpdateProposalOverrides)
 
       # City of Helsinki Extensions and Overrides
       # Helper extensions
