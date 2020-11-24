@@ -15,6 +15,31 @@ The Dockerfile will create a postgres database (pg-data) and redis (redis-data) 
 
 To enter the container in a bash environment, run `bin/docker bash`. To enter the postgres container using psql, run `bin/docker pg`. You can run rails commands with `bin/docker rails [command to run]`. Run `bin/docker` alone to see all the available options.
 
+### Replicating the staging database on a Dockerized local server:
+
+To get a dump of the most recent version of the staging database, run:
+
+``` 
+heroku pg:backups:capture -a decidim-seattle-staging
+heroku pg:backups:download -a decidim-seattle-staging
+```
+
+**Note:** You must have deploy or operate permission of the decidim-seattle-staging app through Heroku.
+
+To implement the dump file locally, run:
+
+`docker exec decidim-seattle_pg_1 pg_restore -U postgres -d decidim-seattle_development [path/to/dump]/latest.dump -c -x --no-privileges --no-owner`
+
+Finally, you will need to set the organization host to 'localhost' to override the host settings from the staging database. Enter the rails console using `docker-compose exec app rails console` , then run:
+
+```
+organization = Decidim::Organization.first
+organization.host = "localhost"
+organization.save!
+```
+
+**Note**: Because Proposals have a "location" field that is validated using Geocoder, you will not be able to create or edit proposals locally unless you add the `ENV[“GOOGLE_GEOCODER_API_KEY”]` secret to your `development_env.rb` file.
+
 ## Running the tests
 
 The Helsinki project this was forked from has no tests for the Ruby code, and some minimal testing for the [`decidim-comments` React app](https://github.com/King-County-Equity-Now/decidim-seattle/tree/main/vendor/decidim-comments/app/frontend). We've added a few tests using [`RSpec`](https://rspec.info/) and [`rspec-rails`](https://github.com/rspec/rspec-rails/tree/4-0-maintenance).
