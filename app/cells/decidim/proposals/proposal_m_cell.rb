@@ -47,7 +47,8 @@ module Decidim
       def description
         model_body = present(model).body
         model_body = strip_tags(model_body)
-
+        model_body = CGI.unescapeHTML(model_body)
+        
         if options[:full_description]
           model_body.gsub(/\n/, "<br>")
         else
